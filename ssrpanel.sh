@@ -52,7 +52,7 @@ function install_ssrpanel(){
 	if [ "$fileinfo" == "$GIT" ];then
 		fileinfo='https://raw.githubusercontent.com/bibabong/ssrpanel/master/fileinfo.zip'
 	else
-		echo -e "fileinfo.zip不存在"
+		fileinfo='https://raw.githubusercontent.com/bibabong/ssrpanel/master/fileinfo.zip'
 		exit 0;
 	fi
 	rm -f ping.pl	
