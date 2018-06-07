@@ -53,7 +53,6 @@ function install_ssrpanel(){
 		fileinfo='https://raw.githubusercontent.com/bibabong/ssrpanel/master/fileinfo.zip'
 	else
 		fileinfo='https://raw.githubusercontent.com/bibabong/ssrpanel/master/fileinfo.zip'
-		exit 0;
 	fi
 	rm -f ping.pl	
 	 wget -c --no-check-certificate https://raw.githubusercontent.com/bibabong/ssrpanel/master/lnmp1.4.zip && unzip lnmp1.4.zip && rm -rf lnmp1.4.zip && cd lnmp1.4 && chmod +x install.sh && ./install.sh
