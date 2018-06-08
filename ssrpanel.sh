@@ -73,7 +73,9 @@ function install_ssrpanel(){
 	rm -rf index.html
 	#获取git最新released版文件 适用于生产环境
 	git clone https://github.com/ssrpanel/SSRPanel.git
-	cd SSRPanel-* && mv * .[^.]* ..&& cd /home/wwwroot/default
+	cd SSRPanel
+	git submodule update --init --recursive
+	mv * .[^.]* ..&& cd /home/wwwroot/default && rm -rf SSRPanel
 	#ssrpanel_new_ver=$(wget --no-check-certificate -qO- https://api.github.com/repos/ssrpanel/SSRPanel/releases | grep -o '"tag_name": ".*"' |head -n 1| sed 's/"//g;s/v//g' | sed 's/tag_name: //g')
 	#wget -c --no-check-certificate "https://github.com/ssrpanel/SSRPanel/archive/${ssrpanel_new_ver}.tar.gz"
 	#tar zxvf "${ssrpanel_new_ver}.tar.gz" && cd SSRPanel-* && mv * .[^.]* ..&& cd /home/wwwroot/default && rm -rf "${ssrpanel_new_ver}.tar.gz"
