@@ -72,9 +72,11 @@ function install_ssrpanel(){
 	cd default
 	rm -rf index.html
 	#获取git最新released版文件 适用于生产环境
-	ssrpanel_new_ver=$(wget --no-check-certificate -qO- https://api.github.com/repos/ssrpanel/SSRPanel/releases | grep -o '"tag_name": ".*"' |head -n 1| sed 's/"//g;s/v//g' | sed 's/tag_name: //g')
-	wget -c --no-check-certificate "https://github.com/ssrpanel/SSRPanel/archive/${ssrpanel_new_ver}.tar.gz"
-	tar zxvf "${ssrpanel_new_ver}.tar.gz" && cd SSRPanel-* && mv * .[^.]* ..&& cd /home/wwwroot/default #&& rm -rf "${ssrpanel_new_ver}.tar.gz"
+	git clone https://github.com/ssrpanel/SSRPanel.git
+	cd SSRPanel-* && mv * .[^.]* ..&& cd /home/wwwroot/default
+	#ssrpanel_new_ver=$(wget --no-check-certificate -qO- https://api.github.com/repos/ssrpanel/SSRPanel/releases | grep -o '"tag_name": ".*"' |head -n 1| sed 's/"//g;s/v//g' | sed 's/tag_name: //g')
+	#wget -c --no-check-certificate "https://github.com/ssrpanel/SSRPanel/archive/${ssrpanel_new_ver}.tar.gz"
+	#tar zxvf "${ssrpanel_new_ver}.tar.gz" && cd SSRPanel-* && mv * .[^.]* ..&& cd /home/wwwroot/default && rm -rf "${ssrpanel_new_ver}.tar.gz"
 	#替换数据库配置
 	wget -N -P /home/wwwroot/default/config/ https://raw.githubusercontent.com/bibabong/ssrpanel/master/app.php
 	wget -N -P /home/wwwroot/default/config/ https://raw.githubusercontent.com/bibabong/ssrpanel/master/database.php
